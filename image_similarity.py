@@ -6,6 +6,9 @@ import numpy as np
 import cv2
 import skimage.metrics
 import matplotlib.pyplot as plt
+import multiprocessing
+from functools import partial
+from tqdm.contrib.concurrent import process_map
 # REQUIRES: pip install sentence-transformers
 from sentence_transformers import SentenceTransformer, util
 
@@ -43,13 +46,21 @@ def structural_similarity(image1, image2, visualize=False):
     plt.show()
   return score
 
-'''Calculate pairwise SSIM and return top K matches'''
-def structural_comparison(image, dataset, top_k=50):
-  matches = []
-  for i in dataset:
-    score = structural_similarity(image, i)
-    matches += [[i.filename.split('/')[-1], score]]
-  return np.sort(np.array(matches, dtype=object), axis=0)[::-1][:top_k]
+def __structural_comparison_worker(image1, image2):
+  score = structural_similarity(Image.open(image1), Image.open(image2))
+  return [image1.split('/')[-1], score]
+
+def structural_comparison(image, dataset, top_k=50, use_multiprocessing=True):
+  if use_multiprocessing:
+    max_workers = multiprocessing.cpu_count()
+    matches = process_map(partial(__structural_comparison_worker, image2=image), dataset, max_workers=max_workers, chunksize=1)
+  else:
+    matches = []
+    for i in dataset:
+      score = structural_similarity(Image.open(i), Image.open(image))
+      matches += [[i.split('/')[-1], score]]
+  matches = np.array(matches, dtype=object)
+  return matches[np.argsort(matches[:, 1])][::-1][:top_k]
 
 '''Helper function to convert scores to matches format'''
 def format(dataset, scores):
@@ -59,9 +70,9 @@ def format(dataset, scores):
   return np.array(matches, dtype=object)
 
 '''Use dense vector representations (ViT) to determine cosine similarity scores and return top K matches'''
-def dense_vector_comparison(image, dataset, top_k=50, multiprocessing=True):
+def dense_vector_comparison(image, dataset, top_k=50, multiprocessing=True, device='cuda'):
   # This method is invariant to transformations
-  model = SentenceTransformer('clip-ViT-B-32')
+  model = SentenceTransformer('clip-ViT-B-32', device=device)
   if multiprocessing:
     # Use the power of multiprocessing!
     pool = model.start_multi_process_pool()

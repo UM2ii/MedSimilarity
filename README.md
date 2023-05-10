@@ -27,11 +27,11 @@ We have provided an example notebook in this repository, along with 100 test ima
 
 Computes the mean structural similarity index measure (SSIM) between two images. This implementation is an extension of `skimage.metrics.structural_similarity` (https://scikit-image.org/docs/stable/api/skimage.metrics.html#skimage.metrics.structural_similarity) with preprocessing steps for medical images.
 
-## Arguments:
+#### Arguments:
 img1, img2: PIL.Image
   Input images
 
-## Returns:
+#### Returns:
 score: float
   The mean structural similarity index measure over the image
 grad: ndarray
@@ -39,14 +39,14 @@ grad: ndarray
 diff: ndarray
   The full SSIM image
 
-## Notes:
+#### Notes:
 - Structural similarity is not invariant to transformations
 
 ### `medsimilarity.structural_comparison`
 
 Computes the pairwise structural similarity index measure (SSIM) between an image and a dataset and returns the top K matches.  
 
-## Arguments:
+#### Arguments:
 img: str
   Path to image
 dataset: list
@@ -56,7 +56,7 @@ top_k: int, optional
 use_multiprocessing: bool, optional
   Enables spawning of multiple processes to speed up pairwise SSIM calculation
 
-## Returns:
+#### Returns:
 score: ndarray
   The `top_k` matches for `img` in `dataset` with SSIM score
 
@@ -64,7 +64,7 @@ score: ndarray
 
 Computes the cosine similarity scores using dense vector representations (DVRS) between an image and dataset and returns the top K matches. This method uses [SentenceTransformers](https://www.sbert.net/) ViT-B transformer for computation.
 
-## Arguments:
+#### Arguments:
 img: str
   Path to image
 dataset: list
@@ -76,7 +76,7 @@ use_multiprocessing: bool, optional
 device: str, optional
   Specifies device to move all resources to. Use 'cuda' to enable GPU acceleration. If left blank, by default 'cuda' is used if available. If not, 'cpu' is used
 
-## Returns:
+#### Returns:
 score: ndarray
   The `top_k` matches for `img` in `dataset` with DVRS score
 
@@ -89,15 +89,15 @@ Computes the combined score from structural similarity index measure (SSIM) and 
 x_combined = sqrt(x_ssim)*(x_dvrs)^2
 ```
 
-## Arguments:
+#### Arguments:
 x_ssim: float
   The SSIM score for pair of images
 x_dvrs: float
   The DVRS score for pair of images
 
-## Returns:
+#### Returns:
 x_combined: float
   Combined score for pair of images
 
-## Notes:
+#### Notes:
 - This worked well in my testing but please take this with a grain of salt!

@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = 'image_similarity',
+    name = 'MedSimilarity',
     version = '1.0',    
-    description = 'A better image dataset loader for TensorFlow.',
-    url = 'https://github.com/UM2ii/image_similarity',
+    description = 'MedSimilarity is an open source Python to compare 2D medical images.',
+    url = 'https://github.com/UM2ii/MedSimilarity',
     author = 'Pranav Kulkarni',
     author_email = 'pranavkop@live.com',
     license = 'Apache License',

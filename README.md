@@ -1,8 +1,25 @@
 # MedSimilarity
 
+[![DOI](https://zenodo.org/badge/583443319.svg)](https://zenodo.org/badge/latestdoi/583443319)
+
 ## What is MedSimilarity?
 
 MedSimilarity is an open source Python to compare 2D medical images.
+
+### Citation
+
+If you use this software, please cite it in your publication using:
+
+```text
+@software{medsimilarity,
+  title={MedSimilarity},
+  author={Kulkarni, Pranav},
+  month={May},
+  year={2023},
+  url={https://github.com/UM2ii/MedSimilarity},
+  doi={10.5281/zenodo.7937894}
+}
+```
 
 ## Getting Started
 

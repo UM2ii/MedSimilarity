@@ -26,7 +26,7 @@ If you use this software, please cite it in your publication using:
 You can install MedSimilarity through `pip` or you can manually install it from source.
 
 ```bash
-$ pip install MedSimilarity
+pip install MedSimilarity
 ```
 
 ### Manual Installation
@@ -34,8 +34,8 @@ $ pip install MedSimilarity
 You can manually install MedSimilarity as follows:
 
 ```bash
-$ git clone https://github.com/UM2ii/MedSimilarity
-$ pip install MedSimilarity/
+git clone https://github.com/UM2ii/MedSimilarity
+pip install -e MedSimilarity/
 ```
 
 ### Example Notebook

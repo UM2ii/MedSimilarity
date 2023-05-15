@@ -1,9 +1,15 @@
 from setuptools import setup, find_packages
+from pathlib import Path
+
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     name = 'MedSimilarity',
-    version = '1.0',    
+    version = '1.0.0',    
     description = 'MedSimilarity is an open source Python to compare 2D medical images.',
+    long_description = long_description,
+    long_description_content_type = 'text/markdown',
     url = 'https://github.com/UM2ii/MedSimilarity',
     author = 'Pranav Kulkarni',
     author_email = 'pranavkop@live.com',
@@ -22,7 +28,6 @@ setup(
       'huggingface-hub>=0.4.0'
     ],
     classifiers=[
-        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Science/Research",

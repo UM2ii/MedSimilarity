@@ -23,7 +23,11 @@ If you use this software, please cite it in your publication using:
 
 ## Getting Started
 
-MedSimilarity is currently not available through `pip`, but you can manually install it.
+You can install MedSimilarity through `pip` or you can manually install it from source.
+
+```bash
+$ pip install MedSimilarity
+```
 
 ### Manual Installation
 

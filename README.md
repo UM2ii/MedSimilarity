@@ -8,7 +8,7 @@ MedSimilarity is an open source Python to compare 2D medical images.
 
 ### Citation
 
-If you use this software, please cite it in your publication using:
+If you use this software in your publication, please cite it using:
 
 ```text
 @software{medsimilarity,
@@ -42,8 +42,9 @@ pip install -e MedSimilarity/
 
 We have provided an example notebook in this repository, along with 100 test images to experiment with. You can find the example notebook [here](./notebooks/example.ipynb).
 
-## Feature roadmap
+## Feature Roadmap
 
+- [ ] End-to-end similarity pipeline
 - [ ] Add support for DICOM and NII formats
 - [ ] Extend functionality to 3D volumes
 

@@ -42,6 +42,11 @@ pip install -e MedSimilarity/
 
 We have provided an example notebook in this repository, along with 100 test images to experiment with. You can find the example notebook [here](./notebooks/example.ipynb).
 
+## Feature roadmap
+
+- [ ] Add support for DICOM and NII formats
+- [ ] Extend functionality to 3D volumes
+
 ## Documentation
 
 ### `medsimilarity.structural_similarity`
